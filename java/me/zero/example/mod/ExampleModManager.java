@@ -22,7 +22,7 @@ public class ExampleModManager extends Manager<Module> {
         Logger.instance.log(Level.INFO, "Loading Modules");
 
         // Load Modules
-        new Reflections("clientapi.example.mod.mods").getSubTypesOf(Module.class).forEach(clazz -> {
+        new Reflections("me.zero.example.mod.mods").getSubTypesOf(Module.class).forEach(clazz -> {
             try {
                 this.addData(clazz.newInstance());
             } catch (InstantiationException | IllegalAccessException e) {
