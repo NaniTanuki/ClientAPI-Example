@@ -1,11 +1,11 @@
 package me.zero.example.mod.mods;
 
+import me.zero.example.mod.category.IMovement;
 import me.zero.client.api.event.EventHandler;
 import me.zero.client.api.event.Listener;
 import me.zero.client.api.event.defaults.UpdateEvent;
 import me.zero.client.api.module.Mod;
 import me.zero.client.api.module.Module;
-import me.zero.example.mod.category.IMovement;
 import org.lwjgl.input.Keyboard;
 
 /**

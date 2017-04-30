@@ -27,7 +27,7 @@ public class Aura extends Module implements ICombat {
 
     @EventHandler
     private Listener<MotionUpdateEvent> motionUpdateListener = new Listener<>(event -> {
-       switch (event.getType()) {
+       switch (event.getState()) {
            case PRE : {
                List<Entity> entities = mc.world.loadedEntityList.stream().filter(e ->
                        e instanceof EntityLivingBase && !e.isDead && e != mc.player && e.getDistanceToEntity(mc.player) < 4.25)

@@ -1,12 +1,14 @@
 package me.zero.example;
 
+import me.zero.example.command.CommandManager;
+import me.zero.example.mod.ExampleModManager;
 import me.zero.client.api.Client;
 import me.zero.client.api.ClientInfo;
 import me.zero.client.api.command.CommandHandler;
+import me.zero.client.api.event.EventHandler;
 import me.zero.client.api.event.EventManager;
-import me.zero.client.api.util.factory.AuthenticationFactory;
-import me.zero.example.command.CommandManager;
-import me.zero.example.mod.ExampleModManager;
+import me.zero.client.api.event.Listener;
+import me.zero.client.api.event.defaults.TextEvent;
 
 /**
  * Created by Brady on 1/19/2017.
@@ -41,6 +43,15 @@ public class ExampleClient extends Client {
         // Simple Protocol Hack (Used for connecting to b0at.xyz for testing)
         ProtocolPatcher patcher = new ProtocolPatcher();
         patcher.setProtocol(315);
+
+        EventManager.subscribe(new Object() {
+            @EventHandler
+            private final Listener<TextEvent> textEventListener = new Listener<>(event -> {
+                if (event.getText().contains("Singleplayer")) {
+                    event.setText(event.getText().replace("Singleplayer", "SingleplayerXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"));
+                }
+            });
+        });
     }
 
     public String getName() {

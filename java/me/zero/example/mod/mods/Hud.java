@@ -1,12 +1,12 @@
 package me.zero.example.mod.mods;
 
+import me.zero.example.ExampleClient;
+import me.zero.example.mod.category.IRender;
 import me.zero.client.api.event.EventHandler;
 import me.zero.client.api.event.Listener;
 import me.zero.client.api.event.defaults.Render2DEvent;
 import me.zero.client.api.module.Mod;
 import me.zero.client.api.module.Module;
-import me.zero.example.ExampleClient;
-import me.zero.example.mod.category.IRender;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 
