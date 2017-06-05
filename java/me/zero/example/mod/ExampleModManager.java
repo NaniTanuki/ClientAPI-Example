@@ -11,7 +11,7 @@ import org.reflections.Reflections;
 /**
  * Created by Brady on 1/25/2017.
  */
-public class ExampleModManager extends Manager<Module> {
+public final class ExampleModManager extends Manager<Module> {
 
     public ExampleModManager() {
         super("Module");

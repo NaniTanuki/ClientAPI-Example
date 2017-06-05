@@ -1,34 +1,30 @@
 package me.zero.example;
 
-import me.zero.client.api.event.EventHandler;
-import me.zero.client.api.event.EventManager;
-import me.zero.client.api.event.Listener;
+import me.zero.alpine.listener.EventHandler;
+import me.zero.alpine.listener.Listener;
+import me.zero.client.api.ClientAPI;
 import me.zero.client.api.event.defaults.PacketEvent;
+import me.zero.client.api.event.defaults.filters.PacketFilter;
 import me.zero.client.api.util.ReflectionUtils;
 import net.minecraft.network.handshake.client.C00Handshake;
-import org.apache.logging.log4j.core.net.Protocol;
 
 /**
  * Created by Brady on 2/16/2017.
  */
-public class ProtocolPatcher {
+public final class ProtocolPatcher {
 
     private int protocol = 316;
 
     public ProtocolPatcher() {
-        EventManager.subscribe(this);
+        ClientAPI.EVENT_BUS.subscribe(this);
     }
 
     @EventHandler
-    private Listener<PacketEvent> packetListener = new Listener<>(event -> {
-        if (event.getType() != PacketEvent.Type.SEND)
-            return;
-
-        if (event.getPacket() instanceof C00Handshake) {
-            C00Handshake handshake = (C00Handshake) event.getPacket();
-            ReflectionUtils.setField(handshake, "protocolVersion", protocol);
-        }
-    });
+    private Listener<PacketEvent.Send> packetSendListener = new Listener<>(event -> {
+        C00Handshake handshake = (C00Handshake) event.getPacket();
+        // This obviously won't work in an obfuscated environment
+        ReflectionUtils.setField(handshake, "protocolVersion", protocol);
+    }, new PacketFilter<>(C00Handshake.class));
 
     public void setProtocol(int protocol) {
         this.protocol = protocol;
