@@ -7,7 +7,6 @@ import me.zero.client.api.util.logger.Level;
 import me.zero.client.api.util.logger.Logger;
 import me.zero.example.ExampleClient;
 import me.zero.example.mod.*;
-import org.reflections.Reflections;
 
 /**
  * Created by Brady on 1/25/2017.
