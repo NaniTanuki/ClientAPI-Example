@@ -32,7 +32,7 @@ public final class ExampleClient extends Client {
         this.setModuleManager(new ExampleModManager());  // Create Module Manager
         this.getModuleManager();                         // Gets the module manager as a generic Manager<Module>
 //        <ExampleModManager>this.getModuleManager();      // Gets the Module Manager casted to our implementation
-        this.loadPlugins("path/to/plugins");        // Load plugins
+        this.loadPlugins("path/to/plugins");             // Load plugins
         this.getModuleManager().load();                  // Load mods
 
         this.setCommandManager(new CommandManager());    // Create Command Manager
