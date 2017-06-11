@@ -6,6 +6,7 @@ import me.zero.client.api.Client;
 import me.zero.client.api.ClientAPI;
 import me.zero.client.api.ClientInfo;
 import me.zero.client.api.event.defaults.TextEvent;
+import me.zero.client.api.event.handle.ClientHandler;
 import me.zero.example.command.CommandManager;
 import me.zero.example.mod.ExampleModManager;
 
@@ -22,16 +23,16 @@ public final class ExampleClient extends Client {
     }
 
     @Override
-    public void onInit(ClientInfo info) {
+    public void onInit(ClientHandler handler) {
         /*
         AuthenticationFactory.create().username("example@host.xyz").password("12345").login(); // Login to our account
         */
 
-        this.info = info;                                // Gets the client info for later usage
+        this.info = getInfo();                           // Gets the client info for later usage
         this.setModuleManager(new ExampleModManager());  // Create Module Manager
         this.getModuleManager();                         // Gets the module manager as a generic Manager<Module>
 //        <ExampleModManager>this.getModuleManager();      // Gets the Module Manager casted to our implementation
-        this.loadPlugins("path/to/plugins");             // Load plugins
+        this.loadPlugins("path/to/plugins");        // Load plugins
         this.getModuleManager().load();                  // Load mods
 
         this.setCommandManager(new CommandManager());    // Create Command Manager
