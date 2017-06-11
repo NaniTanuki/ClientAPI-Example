@@ -6,6 +6,7 @@ import me.zero.client.api.util.Messages;
 import me.zero.client.api.util.logger.Level;
 import me.zero.client.api.util.logger.Logger;
 import me.zero.example.ExampleClient;
+import me.zero.example.mod.*;
 import org.reflections.Reflections;
 
 /**
@@ -22,13 +23,13 @@ public final class ExampleModManager extends Manager<Module> {
         Logger.instance.log(Level.INFO, "Loading Modules");
 
         // Load Modules
-        new Reflections("me.zero.example.mod.mods").getSubTypesOf(Module.class).forEach(clazz -> {
-            try {
-                this.addData(clazz.newInstance());
-            } catch (InstantiationException | IllegalAccessException e) {
-                Logger.instance.logf(Level.SEVERE, Messages.MODULE_INSTANTIATION, clazz.getCanonicalName());
-            }
-        });
+        this.addData(
+            new Aura(),
+            new Camera(),
+            new Fly(),
+            new Hud(),
+            new Speed()
+        );
 
         // Loads Modules from the discovered Plugins by the Plugin loaders
         ExampleClient.getInstance().getPlugins().forEach(plugin -> this.addData(plugin.getModules()));
