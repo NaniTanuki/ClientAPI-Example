@@ -1,5 +1,5 @@
 # ClientAPI Example
-Example Client for ClientAPI
+Example Client for [ClientAPI](https://github.com/ZeroMemes/ClientAPI)
 
 When building a client you should instead use the [CDK][cdk]. This repo is included in the CDK as a [git  submodule][submod].
 
